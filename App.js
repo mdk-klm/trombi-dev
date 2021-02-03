@@ -63,7 +63,6 @@ app.get("/users/:id", (req, res) => {
   const users = readUsers();
   const user = users.find((user) => user.id === Number(req.params.id));
 
-  
   res.json(user);
 });
 
