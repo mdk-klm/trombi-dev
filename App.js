@@ -95,8 +95,6 @@ app.delete("/users/:id", (req, res) => {
   // Récupère la liste des users
   const users = readUsers();
 
-  // Création du nouveau user
-
   const id = Number(req.params.id);
 
   // supprime le user dans le tableau d'users
@@ -106,8 +104,6 @@ app.delete("/users/:id", (req, res) => {
   res.json(deleteUser);
 });
 
-app.post("/users/:id/photo", (req, res) => {
-  const photoLocation = req.files.photo.mv('./public/fff.png');
 
   // reutiliser le put pour modifier le user et mettre le path de la photo dans avatarUrl
 })
