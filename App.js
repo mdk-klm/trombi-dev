@@ -1,18 +1,25 @@
 const fs = require("fs");
 const express = require("express");
 const app = express();
-const cors = require('cors');
-const fileUpload = require('express-fileupload');
-
+const cors = require("cors");
+const { body, validationResult } = require('express-validator');
+const fileUpload = require("express-fileupload");
 app.use(cors());
+
+app.use(express.static('images'));
+
 app.use(express.json());
-app.use(fileUpload());
 
-const getAge = birthDate => new Date(
-  (Date.now() - Date.parse(birthDate))
-).getFullYear() - 1970
+app.use(fileUpload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+  createParentPath: true
+}));
 
-const readUsers = () => JSON.parse(fs.readFileSync("./user.json").toString()).map(user => ({
+const getAge = birthDate => new Date((Date.now() - Date.parse(birthDate))).getFullYear() - 1970
+
+
+const readUsers = () => JSON.parse(fs.readFileSync("./user.json").toString()).map(
+  user => ({
   ...user,
   age: getAge(user.birthDate)
 }));
@@ -21,60 +28,87 @@ app.get("/users", (req, res) => {
   res.json(readUsers());
 });
 
-app.post("/users", (req, res) => {
+app.post("/users", (req, res) => { 
   const body = req.body;
   // Récupère la liste des users
   const users = readUsers();
 
-  if(users.filter((user) => user.email === body.email)){
-    return res.json({messageError: 'cet email est déja utilisé'})
+  if(!req.files) {
+    res.send( {
+      status: false,
+      message: 'no file uploaded'
+    });
   } else {
-  
+    let avatar = req.files.avatarUrl;
+    avatar.mv('./images/' + avatar.name);
+    res.json(req.files.avatarUrl);
+    console.log(avatar.name)
+
   // Création du nouveau user
+  const alreadyEmail = users.find(user => user.email === req.body.email);
   const newUser = {
     id: Math.max(...users.map((user) => user.id)) + 1,
     lastName: body.lastName.toUpperCase(),
     firstName: body.firstName,
     email: body.email,
     birthDate: body.birthDate,
-    avatarUrl: body.avatarUrl,
+    avatarUrl: 'http/localhost:8010/'+avatar.name,
     gender: body.gender,
   };
-  // Ajoute le nouveau user dans le tableau d'users
-  users.push(newUser);
-  // Ecris dans le fichier pour insérer la liste des users
+  
+  if (alreadyEmail == null) {
+    // Ajoute le nouveau user dans le tableau d'users
+     users.push(newUser);
+    // Ecris dans le fichier pour insérer la liste des users
   fs.writeFileSync("./user.json", JSON.stringify(users, null, 4));
+  } else {
+    return res.json({errmessage: 'Email déjà utilisé'})
+  }
+ }
   res.json(users);
-}});
+});
 
 app.put("/users/:id", (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
   const body = req.body;
-
   // Récupère la liste des users
   const users = readUsers();
-
   // Création du nouveau user
-
   const id = Number(req.params.id);
+  const alreadyEmail = users.filter(user => user.id !== id).find(user => user.email === req.body.email);
+  
   const newUser = {
     id: id,
     lastName: body.lastName.toUpperCase(),
     firstName: body.firstName,
     email: body.email,
     birthDate: body.birthDate,
-    avatarUrl: body.avatarUrl,
     gender: body.gender,
+    avatarUrl: body.avatarUrl
   };
-
-  if (users.filter((user) => user.id !== newUser.id), users.some((user) => user.email === newUser.email) ) {
-    return res.json({messageError: "Email déjà utilisé"});
-  } else {
+  if (alreadyEmail == null) {
     // Ajoute le nouveau user dans le tableau d'users
-    const newUsers = [...users.filter((user) => user.id !== id), newUser];
-    // Ecris dans le fichier pour insérer la liste des users
-    fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
-    res.json(newUser);
+  const newUsers = [...users.filter((user) => user.id !== id), newUser];
+  // Ecris dans le fichier pour insérer la liste des users
+  fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
+
+  } else {
+  
+    return res.json({errmessage: 'Email déjà utilisé'})
   }
+  res.json(newUser);
+  }
+);
+
+app.delete("/users/:id", (req) => {
+  const users = readUsers();
+  const id = Number(req.params.id);
+  const newUsers = [...users.filter((user) => user.id !== id), ];
+  fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
+
 });
 
 app.get("/users/:id", (req, res) => {
@@ -87,23 +121,4 @@ app.get("/users/:id", (req, res) => {
   res.json(user);
 });
 
-app.delete("/users/:id", (req, res) => {
-
-  // Récupère la liste des users
-  const users = readUsers();
-
-  // Création du nouveau user
-
-  const id = Number(req.params.id);
-
-  // supprime le user dans le tableau d'users
-  const deleteUser = users.filter((user) => user.id !== id);
-  // Ecris dans le fichier pour insérer la liste des users
-  fs.writeFileSync("./user.json", JSON.stringify(deleteUser, null, 4));
-  res.json(deleteUser);
-});
-
-app.post("/users/:id/photo", (req, res) => {
-  const photoLocation = req.files.photo.mv('./public/fff.png');
-
-app.listen(6929, () => console.log("server is running"));
+app.listen(8081, () => console.log("server is running"));
