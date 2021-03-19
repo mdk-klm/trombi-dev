@@ -1,0 +1,43 @@
+{
+  "name": "v-file-upload",
+  "version": "3.1.7",
+  "description": "File input component for Vue.js",
+  "author": "Daniel Fernando Lourusso <daniel@dflourusso.com.br>",
+  "typings": "types/index.d.ts",
+  "main": "dist/v-file-upload.js",
+  "license": "MIT",
+  "scripts": {
+    "dist": "poi build src/v-file-upload.js",
+    "dist:demo": "poi build ./demo/index.js -c ./poi.config.demo.js",
+    "start": "poi ./demo/index.js"
+  },
+  "files": [
+    "dist/",
+    "types/"
+  ],
+  "keywords": [
+    "vue",
+    "upload",
+    "file-upload",
+    "vue-upload",
+    "vue-file-upload",
+    "upload-vue",
+    "file-upload-vue",
+    "v-upload",
+    "v-file-upload"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dflourusso/v-file-upload.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dflourusso/v-file-upload/issues"
+  },
+  "homepage": "https://github.com/dflourusso/v-file-upload#readme",
+  "devDependencies": {
+    "poi": "^9.6.13",
+    "pug": "^2.0.3",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  }
+}
