@@ -1,9 +1,12 @@
 const fs = require("fs");
 const express = require("express");
 const app = express();
+const cors = require('cors');
+const fileUpload = require('express-fileupload');
 
-
-
+app.use(cors());
+app.use(express.json());
+app.use(fileUpload());
 
 const getAge = birthDate => new Date(
   (Date.now() - Date.parse(birthDate))
@@ -39,15 +42,9 @@ app.post("/users", (req, res) => {
   };
   // Ajoute le nouveau user dans le tableau d'users
   users.push(newUser);
-  if (users.filter((user) => user.id !== newUser.id), users.some((user) => user.email === newUser.email) ) {
-    return res.json({messageError: "Email déjà utilisé"});
-  } else {
-    // Ajoute le nouveau user dans le tableau d'users
-    const newUsers = [...users.filter((user) => user.id !== id), newUser];
-    // Ecris dans le fichier pour insérer la liste des users
-    fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
-    res.json(newUser);
-  }
+  // Ecris dans le fichier pour insérer la liste des users
+  fs.writeFileSync("./user.json", JSON.stringify(users, null, 4));
+  res.json(users);
 }});
 
 app.put("/users/:id", (req, res) => {
@@ -95,6 +92,8 @@ app.delete("/users/:id", (req, res) => {
   // Récupère la liste des users
   const users = readUsers();
 
+  // Création du nouveau user
+
   const id = Number(req.params.id);
 
   // supprime le user dans le tableau d'users
@@ -104,8 +103,7 @@ app.delete("/users/:id", (req, res) => {
   res.json(deleteUser);
 });
 
+app.post("/users/:id/photo", (req, res) => {
+  const photoLocation = req.files.photo.mv('./public/fff.png');
 
-  // reutiliser le put pour modifier le user et mettre le path de la photo dans avatarUrl
-})
-
-app.listen(8081, () => console.log("server is running"));
+app.listen(6929, () => console.log("server is running"));
