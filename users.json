@@ -1,0 +1,73 @@
+[
+    {
+        "id": 6,
+        "lastName": "GEROUDET-RASTOIX",
+        "firstName": "Gabriel",
+        "email": "gabrielle.geroudet-rastoix@my-digital-school.org",
+        "birthDate": "12/07/1994",
+        "avatarUrl": "/",
+        "gender": "female",
+        "age": null
+    },
+    {
+        "id": 19,
+        "lastName": "DFGFFFFFFFFFFFFF",
+        "firstName": "dsgggggggg",
+        "birthDate": "2021-03-13",
+        "gender": "male",
+        "age": 0
+    },
+    {
+        "id": 11,
+        "lastName": "LOL",
+        "firstName": "lol",
+        "email": "lolo",
+        "gender": "male",
+        "age": null
+    },
+    {
+        "id": 26,
+        "lastName": "FDYDTY",
+        "firstName": "lololololol",
+        "gender": "male",
+        "age": null
+    },
+    {
+        "id": 1,
+        "lastName": "GALLEGO",
+        "firstName": "Chloétyutyqzerzerzer",
+        "email": "chloe.gallego-pelegrin@my-digital-school.org",
+        "birthDate": "24/08/1987",
+        "avatarUrl": "",
+        "gender": "female",
+        "age": null
+    },
+    {
+        "id": 3,
+        "lastName": "BIQUE",
+        "firstName": "Florian",
+        "email": "florian.bique@my-digital-school.org",
+        "birthDate": "00/00/0000",
+        "avatarUrl": "",
+        "gender": "male",
+        "age": null
+    },
+    {
+        "id": 5,
+        "lastName": "CÔTE",
+        "firstName": "Yoann",
+        "email": "yoann.cote@my-digital-school.org",
+        "birthDate": "2021-03-18",
+        "avatarUrl": "img/cote_yoann.jpg",
+        "gender": "male",
+        "age": 0
+    },
+    {
+        "id": 15,
+        "lastName": "GHJERTEZRTERT",
+        "firstName": "jgxcv",
+        "email": "fghj",
+        "gender": "male",
+        "age": null
+    }
+]

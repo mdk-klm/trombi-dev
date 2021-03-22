@@ -1,34 +1,32 @@
 const fs = require("fs");
 const express = require("express");
-const fileUpload = require('express-fileupload');
+const fileUpload = require("express-fileupload");
 const cors = require("cors");
 
 const app = express();
 
-app.use(express.static('public'));
-app.use(express.static(path));
+app.use(express.static("public"));
 app.use(cors());
 app.use(fileUpload());
 app.use(express.json());
-
 
 // Permet de récupérer l'ensemble des utilisateurs
 const readUsers = () => JSON.parse(fs.readFileSync("./user.json").toString());
 
 getAge = (dateString) => {
-    let today = new Date();
-    let birthDates = new Date(dateString);
-    let age = today.getFullYear() - birthDates.getFullYear();
-    let m = today.getMonth() - birthDates.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDates.getDate())) {
-        age--;
-    }
-    return age;
-}
+  let today = new Date();
+  let birthDates = new Date(dateString);
+  let age = today.getFullYear() - birthDates.getFullYear();
+  let m = today.getMonth() - birthDates.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birthDates.getDate())) {
+    age--;
+  }
+  return age;
+};
 
 // Retourne la liste d'utilisateurs
 app.get("/users", (req, res) => {
-    res.json(readUsers());
+  res.json(readUsers());
 });
 
 // Création d'un utilisateur
@@ -36,11 +34,6 @@ app.post("/users", (req, res) => {
   const body = req.body;
   // Récupère la liste des users
   const users = readUsers();
-
-  if(users.filter((user) => user.email === body.email)){
-    return res.json({messageError: 'cet email est déja utilisé'})
-  } else {
-  
   // Création du nouveau user
   const newUser = {
     id: Math.max(...users.map((user) => user.id)) + 1,
@@ -56,58 +49,59 @@ app.post("/users", (req, res) => {
   // Ecris dans le fichier pour insérer la liste des users
   fs.writeFileSync("./user.json", JSON.stringify(users, null, 4));
   res.json(users);
-}});
+});
 // Modification d'un utilisateur
 app.put("/users/:id", (req, res) => {
-    const body = req.body;
+  const body = req.body;
 
-    // Récupère la liste des users
-    const users = readUsers();
+  // Récupère la liste des users
+  const users = readUsers();
 
-    // Création du nouveau user
-    const id = Number(req.params.id);
-    const newUser = {
-        id: id,
-        lastName: body.lastName.toUpperCase(),
-        firstName: body.firstName,
-        email: body.email,
-        birthDate: body.birthDate,
-        avatarUrl: body.avatarUrl,
-        gender: body.gender,
-        age: getAge(body.birthDate)
-    };
+  // Création du nouveau user
+  const id = Number(req.params.id);
+  const newUser = {
+    id: id,
+    lastName: body.lastName.toUpperCase(),
+    firstName: body.firstName,
+    email: body.email,
+    birthDate: body.birthDate,
+    avatarUrl: body.avatarUrl,
+    gender: body.gender,
+    age: getAge(body.birthDate),
+  };
 
-    // Ajoute le nouveau user dans le tableau d'users
-    const newUsers = [...users.filter((user) => user.id !== id), newUser];
+  // Ajoute le nouveau user dans le tableau d'users
+  const newUsers = [...users.filter((user) => user.id !== id), newUser];
 
-    // Ecris dans le fichier pour insérer la liste des users
-    fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
-    res.json(newUser);
+  // Ecris dans le fichier pour insérer la liste des users
+  fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
+  res.json(newUser);
 });
 
 // Suppression d'un utilisateur
 app.delete("/users/:id", (req, res) => {
-    // Récupère la liste des users
-    const users = readUsers();
+  // Récupère la liste des users
+  const users = readUsers();
 
-    const usersFiltered = users.filter((user) => user.id !== Number(req.params.id));
+  const usersFiltered = users.filter(
+    (user) => user.id !== Number(req.params.id)
+  );
 
-    // Ecris dans le fichier pour insérer la liste des users
-    fs.writeFileSync("./user.json", JSON.stringify(usersFiltered, null, 4));
-    res.json(usersFiltered);
+  // Ecris dans le fichier pour insérer la liste des users
+  fs.writeFileSync("./user.json", JSON.stringify(usersFiltered, null, 4));
+  res.json(usersFiltered);
 });
 
 // Retourne un utilisateur en fonction de son id
 app.get("/users/:id", (req, res) => {
-    const body = req.body;
+  const body = req.body;
 
-    // Récupère la liste des users
-    const users = readUsers();
-    // Récupère l'utilisateur en fonction de son id
-    const user = users.find((user) => user.id === Number(req.params.id));
+  // Récupère la liste des users
+  const users = readUsers();
+  // Récupère l'utilisateur en fonction de son id
+  const user = users.find((user) => user.id === Number(req.params.id));
 
-    res.json(user);
+  res.json(user);
 });
-
 
 app.listen(8081, () => console.log("server is running"));

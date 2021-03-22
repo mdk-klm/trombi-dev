@@ -1,136 +1,5 @@
 [
     {
-        "id": 9,
-        "lastName": "TYU",
-        "firstName": "ytu",
-        "email": "tyu",
-        "age": null
-    },
-    {
-        "id": 10,
-        "lastName": "TYU",
-        "firstName": "ytu",
-        "email": "tyu",
-        "age": null
-    },
-    {
-        "id": 16,
-        "lastName": "GHJFJERTERTZERT",
-        "firstName": "ghjfhjfh",
-        "age": null
-    },
-    {
-        "id": 17,
-        "lastName": "ANTOINE",
-        "firstName": "antoine",
-        "age": null
-    },
-    {
-        "id": 18,
-        "lastName": "LOOOLO",
-        "firstName": "lolo",
-        "age": null
-    },
-    {
-        "id": 20,
-        "lastName": "IYUITYUI",
-        "firstName": "uioiougy",
-        "age": null
-    },
-    {
-        "id": 21,
-        "lastName": "BVVVC",
-        "firstName": "vxcb n",
-        "age": null
-    },
-    {
-        "id": 22,
-        "lastName": "RTYRTY",
-        "firstName": "ytrtyrt",
-        "age": null
-    },
-    {
-        "id": 23,
-        "lastName": "SDFSDFSDFSDF",
-        "firstName": "sdfsdgsdf",
-        "age": null
-    },
-    {
-        "id": 24,
-        "lastName": "JGHJG",
-        "firstName": "fhjfgjgf",
-        "email": "hjghj",
-        "age": null
-    },
-    {
-        "id": 1,
-        "lastName": "GALLEGO",
-        "firstName": "Chloétyutyqzerzerzer",
-        "email": "chloe.gallego-pelegrin@my-digital-school.org",
-        "birthDate": "24/08/1987",
-        "gender": "female",
-        "avatarUrl": "",
-        "age": null
-    },
-    {
-        "id": 3,
-        "lastName": "BIQUETTE",
-        "firstName": "Florian",
-        "email": "florian.bique@my-digital-school.org",
-        "birthDate": "00/00/0000",
-        "gender": "male",
-        "avatarUrl": "",
-        "age": null
-    },
-    {
-        "id": 2,
-        "lastName": "ARQUILLIERE",
-        "firstName": "Emilie",
-        "email": "emilie.arquilliere@my-digital-school.org",
-        "birthDate": "00/00/0000",
-        "gender": "female",
-        "avatarUrl": "arquilliere_emilie.jpg",
-        "age": null
-    },
-    {
-        "id": 15,
-        "lastName": "GHJERTEZRTERT",
-        "firstName": "jg",
-        "email": "fghj",
-        "gender": "male",
-        "age": null
-    },
-    {
-        "id": 7,
-        "lastName": "MARTINOÉ",
-        "firstName": "Antoine",
-        "email": "lol",
-        "birthDate": "1993-04-21",
-        "gender": "male",
-        "avatarUrl": "",
-        "age": 27
-    },
-    {
-        "id": 5,
-        "lastName": "CÔTEDEPORC",
-        "firstName": "Yoann",
-        "email": "yoann.cote@my-digital-school.org",
-        "birthDate": "2021-03-18",
-        "gender": "male",
-        "avatarUrl": "",
-        "age": 0
-    },
-    {
-        "id": 6,
-        "lastName": "GEROUDET-RASTOIX",
-        "firstName": "Gabriel",
-        "email": "gabrielle.geroudet-rastoix@my-digital-school.org",
-        "birthDate": "00/00/0000",
-        "avatarUrl": "/",
-        "gender": "female",
-        "age": null
-    },
-    {
         "id": 19,
         "lastName": "DFGFFFFFFFFFFFFF",
         "firstName": "dsgggggggg",
@@ -152,5 +21,101 @@
         "firstName": "lololololol",
         "gender": "male",
         "age": null
+    },
+    {
+        "id": 1,
+        "lastName": "GALLEGO",
+        "firstName": "Chloétyutyqzerzerzer",
+        "email": "chloe.gallego-pelegrin@my-digital-school.org",
+        "birthDate": "24/08/1987",
+        "avatarUrl": "",
+        "gender": "female",
+        "age": null
+    },
+    {
+        "id": 3,
+        "lastName": "BIQUE",
+        "firstName": "Florian",
+        "email": "florian.bique@my-digital-school.org",
+        "birthDate": "00/00/0000",
+        "avatarUrl": "",
+        "gender": "male",
+        "age": null
+    },
+    {
+        "id": 5,
+        "lastName": "CÔTE",
+        "firstName": "Yoann",
+        "email": "yoann.cote@my-digital-school.org",
+        "birthDate": "2021-03-18",
+        "avatarUrl": "./img/cote_yoann.jpg",
+        "gender": "male",
+        "age": 0
+    },
+    {
+        "id": 15,
+        "lastName": "GHJERTEZRTERT",
+        "firstName": "jglol",
+        "email": "fghj",
+        "gender": "male",
+        "age": null
+    },
+    {
+        "id": 6,
+        "lastName": "GEROUDET-RASTOIX",
+        "firstName": "Gabriel",
+        "email": "gabrielle.geroudet-rastoix@my-digital-school.org",
+        "birthDate": "2019-08-28",
+        "avatarUrl": "/",
+        "gender": "female",
+        "age": 1
+    },
+    {
+        "id": 27,
+        "lastName": "QDFQSDFWXC",
+        "firstName": "aquerty",
+        "email": "undefined",
+        "birthDate": "undefined",
+        "gender": "undefined"
+    },
+    {
+        "id": 28,
+        "lastName": "LOILLOOLIL",
+        "firstName": "loilol",
+        "email": "undefined",
+        "birthDate": "undefined",
+        "gender": "undefined"
+    },
+    {
+        "id": 29,
+        "lastName": "<WCXW<C<C<X",
+        "firstName": "sdfvwxcvw<c",
+        "email": "undefined",
+        "birthDate": "undefined",
+        "gender": "undefined"
+    },
+    {
+        "id": 30,
+        "lastName": "CVXWCVCWXV",
+        "firstName": "wdvwxcvwx",
+        "email": "undefined",
+        "birthDate": "undefined",
+        "gender": "undefined"
+    },
+    {
+        "id": 31,
+        "lastName": "ZQDQSDCVF",
+        "firstName": "xcvbffrgds<d",
+        "email": "undefined",
+        "birthDate": "undefined",
+        "gender": "undefined"
+    },
+    {
+        "id": 32,
+        "lastName": ">WX>WX<",
+        "firstName": "Xcwxcwxc",
+        "email": "undefined",
+        "birthDate": "undefined",
+        "gender": "male"
     }
 ]
