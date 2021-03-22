@@ -1,87 +1,76 @@
 [
     {
-        "id": 8,
-        "lastName": "BIQUE",
-        "firstName": "Florian",
-        "email": "florian.bique@my-digital-school.org",
-        "birthDate": "13/03/1998",
-        "avatarUrl": "",
-        "gender": "male"
-    },
-    {
-        "id": 1,
-        "lastName": "GALLEGO",
-        "firstName": "Chloétyuty",
-        "email": "chloe.gallego-pelegrin@my-digital-school.org",
-        "birthDate": "24/08/1987",
-        "avatarUrl": "",
-        "gender": "female"
-    },
-    {
         "id": 9,
         "lastName": "TYU",
         "firstName": "ytu",
-        "email": "tyu"
+        "email": "tyu",
+        "age": null
     },
     {
         "id": 10,
         "lastName": "TYU",
         "firstName": "ytu",
-        "email": "tyu"
+        "email": "tyu",
+        "age": null
     },
     {
-        "id": 12,
-        "lastName": "GFH",
-        "firstName": "rgh",
-        "gender": "female"
+        "id": 16,
+        "lastName": "GHJFJERTERTZERT",
+        "firstName": "ghjfhjfh",
+        "age": null
     },
     {
-        "id": 13,
-        "lastName": "GFH",
-        "firstName": "rgh",
-        "gender": "female"
+        "id": 17,
+        "lastName": "ANTOINE",
+        "firstName": "antoine",
+        "age": null
     },
     {
-        "id": 14,
-        "lastName": "GFH",
-        "firstName": "rgh",
-        "gender": "female"
+        "id": 18,
+        "lastName": "LOOOLO",
+        "firstName": "lolo",
+        "age": null
     },
     {
-        "id": 2,
-        "lastName": "ARQUILLIERE",
-        "firstName": "Emilie",
-        "email": "emilie.arquilliere@my-digital-school.org",
-        "birthDate": "00/00/0000",
+        "id": 20,
+        "lastName": "IYUITYUI",
+        "firstName": "uioiougy",
+        "age": null
+    },
+    {
+        "id": 21,
+        "lastName": "BVVVC",
+        "firstName": "vxcb n",
+        "age": null
+    },
+    {
+        "id": 22,
+        "lastName": "RTYRTY",
+        "firstName": "ytrtyrt",
+        "age": null
+    },
+    {
+        "id": 23,
+        "lastName": "SDFSDFSDFSDF",
+        "firstName": "sdfsdgsdf",
+        "age": null
+    },
+    {
+        "id": 24,
+        "lastName": "JGHJG",
+        "firstName": "fhjfgjgf",
+        "email": "hjghj",
+        "age": null
+    },
+    {
+        "id": 1,
+        "lastName": "GALLEGO",
+        "firstName": "Chloétyutyqzerzerzer",
+        "email": "chloe.gallego-pelegrin@my-digital-school.org",
+        "birthDate": "24/08/1987",
+        "gender": "female",
         "avatarUrl": "",
-        "gender": "female"
-    },
-    {
-        "id": 5,
-        "lastName": "CÔTEDEPORC",
-        "firstName": "Yoann",
-        "email": "yoann.cote@my-digital-school.org",
-        "birthDate": "00/00/0000",
-        "avatarUrl": "",
-        "gender": "male"
-    },
-    {
-        "id": 4,
-        "lastName": "BRETTON",
-        "firstName": "Jordan",
-        "email": "jordan.bretton@my-digital-school.org",
-        "birthDate": "03/11/1993",
-        "avatarUrl": "",
-        "gender": "female"
-    },
-    {
-        "id": 6,
-        "lastName": "GEROUDET-RASTOIX",
-        "firstName": "Gabrielle",
-        "email": "gabrielle.geroudet-rastoix@my-digital-school.org",
-        "birthDate": "00/00/0000",
-        "avatarUrl": "",
-        "gender": "female"
+        "age": null
     },
     {
         "id": 3,
@@ -89,90 +78,79 @@
         "firstName": "Florian",
         "email": "florian.bique@my-digital-school.org",
         "birthDate": "00/00/0000",
+        "gender": "male",
         "avatarUrl": "",
-        "gender": "male"
+        "age": null
+    },
+    {
+        "id": 2,
+        "lastName": "ARQUILLIERE",
+        "firstName": "Emilie",
+        "email": "emilie.arquilliere@my-digital-school.org",
+        "birthDate": "00/00/0000",
+        "gender": "female",
+        "avatarUrl": "arquilliere_emilie.jpg",
+        "age": null
     },
     {
         "id": 15,
-        "lastName": "GHJ",
+        "lastName": "GHJERTEZRTERT",
         "firstName": "jg",
         "email": "fghj",
-        "gender": "male"
+        "gender": "male",
+        "age": null
     },
     {
-        "id": 16,
-        "lastName": "GHJFJERTERTZERT",
-        "firstName": "ghjfhjfh"
+        "id": 7,
+        "lastName": "MARTINOÉ",
+        "firstName": "Antoine",
+        "email": "lol",
+        "birthDate": "1993-04-21",
+        "gender": "male",
+        "avatarUrl": "",
+        "age": 27
     },
     {
-        "id": 17,
-        "lastName": "ANTOINE",
-        "firstName": "antoine"
+        "id": 5,
+        "lastName": "CÔTEDEPORC",
+        "firstName": "Yoann",
+        "email": "yoann.cote@my-digital-school.org",
+        "birthDate": "2021-03-18",
+        "gender": "male",
+        "avatarUrl": "",
+        "age": 0
     },
     {
-        "id": 18,
-        "lastName": "LOOOLO",
-        "firstName": "lolo"
+        "id": 6,
+        "lastName": "GEROUDET-RASTOIX",
+        "firstName": "Gabriel",
+        "email": "gabrielle.geroudet-rastoix@my-digital-school.org",
+        "birthDate": "00/00/0000",
+        "avatarUrl": "/",
+        "gender": "female",
+        "age": null
     },
     {
         "id": 19,
         "lastName": "DFGFFFFFFFFFFFFF",
         "firstName": "dsgggggggg",
         "birthDate": "2021-03-13",
-        "gender": "male"
-    },
-    {
-        "id": 20,
-        "lastName": "IYUITYUI",
-        "firstName": "uioiougy"
-    },
-    {
-        "id": 21,
-        "lastName": "BVVVC",
-        "firstName": "vxcb n"
-    },
-    {
-        "id": 7,
-        "lastName": "MARTINOYK",
-        "firstName": "Antoine",
-        "email": "antoine.martin@my-digital-school.org",
-        "birthDate": "1993-04-21",
-        "avatarUrl": "",
-        "gender": "male"
-    },
-    {
-        "id": 22,
-        "lastName": "RTYRTY",
-        "firstName": "ytrtyrt"
-    },
-    {
-        "id": 23,
-        "lastName": "SDFSDFSDFSDF",
-        "firstName": "sdfsdgsdf"
+        "gender": "male",
+        "age": 0
     },
     {
         "id": 11,
         "lastName": "LOL",
         "firstName": "lol",
         "email": "lolo",
-        "gender": "male"
-    },
-    {
-        "id": 24,
-        "lastName": "JGHJG",
-        "firstName": "fhjfgjgf",
-        "email": "hjghj"
-    },
-    {
-        "id": 25,
-        "lastName": "HGJGFJGFJ",
-        "firstName": "ghjghjoooooooooo",
-        "gender": "male"
+        "gender": "male",
+        "age": null
     },
     {
         "id": 26,
         "lastName": "FDYDTY",
-        "firstName": "lololololololololgufgyd",
-        "gender": "male"
+        "firstName": "lololololol",
+        "gender": "male",
+        "age": null
     }
 ]

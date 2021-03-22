@@ -1,124 +1,113 @@
 const fs = require("fs");
 const express = require("express");
-const app = express();
+const fileUpload = require('express-fileupload');
 const cors = require("cors");
-const { body, validationResult } = require('express-validator');
-const fileUpload = require("express-fileupload");
+
+const app = express();
+
+app.use(express.static('public'));
+app.use(express.static(path));
 app.use(cors());
-
-app.use(express.static('images'));
-
+app.use(fileUpload());
 app.use(express.json());
 
-app.use(fileUpload({
-  limits: { fileSize: 50 * 1024 * 1024 },
-  createParentPath: true
-}));
 
-const getAge = birthDate => new Date((Date.now() - Date.parse(birthDate))).getFullYear() - 1970
+// Permet de récupérer l'ensemble des utilisateurs
+const readUsers = () => JSON.parse(fs.readFileSync("./user.json").toString());
 
+getAge = (dateString) => {
+    let today = new Date();
+    let birthDates = new Date(dateString);
+    let age = today.getFullYear() - birthDates.getFullYear();
+    let m = today.getMonth() - birthDates.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDates.getDate())) {
+        age--;
+    }
+    return age;
+}
 
-const readUsers = () => JSON.parse(fs.readFileSync("./user.json").toString()).map(
-  user => ({
-  ...user,
-  age: getAge(user.birthDate)
-}));
-
+// Retourne la liste d'utilisateurs
 app.get("/users", (req, res) => {
-  res.json(readUsers());
+    res.json(readUsers());
 });
 
-app.post("/users", (req, res) => { 
+// Création d'un utilisateur
+app.post("/users", (req, res) => {
   const body = req.body;
   // Récupère la liste des users
   const users = readUsers();
 
-  if(!req.files) {
-    res.send( {
-      status: false,
-      message: 'no file uploaded'
-    });
+  if(users.filter((user) => user.email === body.email)){
+    return res.json({messageError: 'cet email est déja utilisé'})
   } else {
-    let avatar = req.files.avatarUrl;
-    avatar.mv('./images/' + avatar.name);
-    res.json(req.files.avatarUrl);
-    console.log(avatar.name)
-
+  
   // Création du nouveau user
-  const alreadyEmail = users.find(user => user.email === req.body.email);
   const newUser = {
     id: Math.max(...users.map((user) => user.id)) + 1,
     lastName: body.lastName.toUpperCase(),
     firstName: body.firstName,
     email: body.email,
     birthDate: body.birthDate,
-    avatarUrl: 'http/localhost:8010/'+avatar.name,
+    avatarUrl: body.avatarUrl,
     gender: body.gender,
   };
-  
-  if (alreadyEmail == null) {
-    // Ajoute le nouveau user dans le tableau d'users
-     users.push(newUser);
-    // Ecris dans le fichier pour insérer la liste des users
-  fs.writeFileSync("./user.json", JSON.stringify(users, null, 4));
-  } else {
-    return res.json({errmessage: 'Email déjà utilisé'})
-  }
- }
-  res.json(users);
-});
-
-app.put("/users/:id", (req, res) => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    return res.status(400).json({ errors: errors.array() });
-  }
-  const body = req.body;
-  // Récupère la liste des users
-  const users = readUsers();
-  // Création du nouveau user
-  const id = Number(req.params.id);
-  const alreadyEmail = users.filter(user => user.id !== id).find(user => user.email === req.body.email);
-  
-  const newUser = {
-    id: id,
-    lastName: body.lastName.toUpperCase(),
-    firstName: body.firstName,
-    email: body.email,
-    birthDate: body.birthDate,
-    gender: body.gender,
-    avatarUrl: body.avatarUrl
-  };
-  if (alreadyEmail == null) {
-    // Ajoute le nouveau user dans le tableau d'users
-  const newUsers = [...users.filter((user) => user.id !== id), newUser];
+  // Ajoute le nouveau user dans le tableau d'users
+  users.push(newUser);
   // Ecris dans le fichier pour insérer la liste des users
-  fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
+  fs.writeFileSync("./user.json", JSON.stringify(users, null, 4));
+  res.json(users);
+}});
+// Modification d'un utilisateur
+app.put("/users/:id", (req, res) => {
+    const body = req.body;
 
-  } else {
-  
-    return res.json({errmessage: 'Email déjà utilisé'})
-  }
-  res.json(newUser);
-  }
-);
+    // Récupère la liste des users
+    const users = readUsers();
 
-app.delete("/users/:id", (req) => {
-  const users = readUsers();
-  const id = Number(req.params.id);
-  const newUsers = [...users.filter((user) => user.id !== id), ];
-  fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
+    // Création du nouveau user
+    const id = Number(req.params.id);
+    const newUser = {
+        id: id,
+        lastName: body.lastName.toUpperCase(),
+        firstName: body.firstName,
+        email: body.email,
+        birthDate: body.birthDate,
+        avatarUrl: body.avatarUrl,
+        gender: body.gender,
+        age: getAge(body.birthDate)
+    };
 
+    // Ajoute le nouveau user dans le tableau d'users
+    const newUsers = [...users.filter((user) => user.id !== id), newUser];
+
+    // Ecris dans le fichier pour insérer la liste des users
+    fs.writeFileSync("./user.json", JSON.stringify(newUsers, null, 4));
+    res.json(newUser);
 });
 
+// Suppression d'un utilisateur
+app.delete("/users/:id", (req, res) => {
+    // Récupère la liste des users
+    const users = readUsers();
+
+    const usersFiltered = users.filter((user) => user.id !== Number(req.params.id));
+
+    // Ecris dans le fichier pour insérer la liste des users
+    fs.writeFileSync("./user.json", JSON.stringify(usersFiltered, null, 4));
+    res.json(usersFiltered);
+});
+
+// Retourne un utilisateur en fonction de son id
 app.get("/users/:id", (req, res) => {
-  const body = req.body;
+    const body = req.body;
 
-  // Récupère la liste des users
-  const users = readUsers();
-  const user = users.find((user) => user.id === Number(req.params.id));
+    // Récupère la liste des users
+    const users = readUsers();
+    // Récupère l'utilisateur en fonction de son id
+    const user = users.find((user) => user.id === Number(req.params.id));
 
-  res.json(user);
+    res.json(user);
 });
+
 
 app.listen(8081, () => console.log("server is running"));
