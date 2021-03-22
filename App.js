@@ -31,9 +31,22 @@ app.get("/users", (req, res) => {
 
 // Création d'un utilisateur
 app.post("/users", (req, res) => {
+   
+    // Récupère le fichier
+   
   const body = req.body;
   // Récupère la liste des users
   const users = readUsers();
+  
+  //vérifie que le mail est dispo
+users.filter((user) => {
+    console.log(user);
+    if (user.email === body.email) {
+        console.log('user: ', user.email, 'new user: ', body.email);
+        return res.status(500).send({msg: "erreur"});
+    }
+})
+ 
   // Création du nouveau user
   const newUser = {
     id: Math.max(...users.map((user) => user.id)) + 1,
